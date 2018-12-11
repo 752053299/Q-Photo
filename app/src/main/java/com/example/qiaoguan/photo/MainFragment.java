@@ -37,6 +37,7 @@ public class MainFragment extends BaseMainFragment {
     private ThumbnailDownLoader<BaseViewHolder> mThumbnailDownloader;
     @NonNull
     private CompositeDisposable mCompositeDisposable;
+
     public static MainFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -58,7 +59,7 @@ public class MainFragment extends BaseMainFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
-        photoRecycle.setLayoutManager(new GridLayoutManager(getContext(),3));
+        photoRecycle.setLayoutManager(new GridLayoutManager(getContext(),2));
         initDownloader();
         getPhotoItems();
         return view;
@@ -73,7 +74,7 @@ public class MainFragment extends BaseMainFragment {
 
     private void bindAdapter() {
         if (isAdded()) {
-            mAdapter = new PhotoAdapter(items,mThumbnailDownloader);
+            mAdapter = new PhotoAdapter(items,mCompositeDisposable);
             mAdapter.bindToRecyclerView(photoRecycle);
         }
     }

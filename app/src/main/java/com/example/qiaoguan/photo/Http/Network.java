@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Network {
@@ -33,6 +34,7 @@ public class Network {
                     .client(okhttpClientBuilder.build())
                     .baseUrl(GUIWU_BASE_URL)
                     .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
             photoApis = retrofit.create(PhotoApis.class);
         }
