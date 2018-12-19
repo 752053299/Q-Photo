@@ -80,7 +80,7 @@ public class MainFragment extends BaseMainFragment {
     }
 
     private void getPhotoItems() {
-        Network.getPhotoApis().getPhtots(50).enqueue(new Callback<GetPhotosResponse>() {
+        Network.getPhotoApis().getPhtots(100).enqueue(new Callback<GetPhotosResponse>() {
             @Override
             public void onResponse(Call<GetPhotosResponse> call, Response<GetPhotosResponse> response) {
                 GetPhotosResponse returnResponse = response.body();

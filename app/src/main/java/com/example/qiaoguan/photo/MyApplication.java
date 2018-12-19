@@ -27,7 +27,7 @@ public class MyApplication extends Application {
 
         //leakCanary
         refWatcher = setupLeakCanary();
-
+        PhotoDataManger.getINSTANCE().init(getApplicationContext());
     }
 
     //fragmentation

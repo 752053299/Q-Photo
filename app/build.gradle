@@ -59,4 +59,6 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
     implementation project(":recycleLibrary")
+
+    implementation 'com.jakewharton:disklrucache:2.0.2'
 }
