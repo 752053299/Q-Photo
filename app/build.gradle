@@ -22,6 +22,10 @@ android {
             buildConfigField("boolean", "IS_SHOW_LOG", SHOW_LOG)
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {

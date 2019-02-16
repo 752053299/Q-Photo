@@ -61,7 +61,7 @@ public class MainFragment extends BaseMainFragment {
         unbinder = ButterKnife.bind(this, view);
         photoRecycle.setLayoutManager(new GridLayoutManager(getContext(),2));
         initDownloader();
-        getPhotoItems();
+        //getPhotoItems();
         return view;
     }
 

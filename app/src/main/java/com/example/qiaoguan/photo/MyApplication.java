@@ -14,10 +14,18 @@ import static android.os.Process.killProcess;
 public class MyApplication extends Application {
     private Fragmentation fragmentation;
     private RefWatcher refWatcher;
+
+    private static MyApplication INSTANCE;
+
+    public static synchronized MyApplication getINSTANCE(){
+        return INSTANCE;
+    }
+
+
     @Override
     public void onCreate() {
         super.onCreate();
-
+        INSTANCE = this;
         //fragmentation
         fragmentation = Fragmentation.builder()
                 .stackViewMode(Fragmentation.BUBBLE)
@@ -51,6 +59,10 @@ public class MyApplication extends Application {
             return RefWatcher.DISABLED;
         }
         return LeakCanary.install(this);
+    }
+
+    public Context getContext(){
+        return getApplicationContext();
     }
 
 }

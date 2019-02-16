@@ -41,7 +41,7 @@ public class AppUtil {
         }catch (NoSuchAlgorithmException e){
             cacheKey = String.valueOf(url.hashCode());
         }
-        return cacheKey;
+        return cacheKey.toLowerCase();
     }
 
 }
