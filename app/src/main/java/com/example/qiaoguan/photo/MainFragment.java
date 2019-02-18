@@ -60,8 +60,8 @@ public class MainFragment extends BaseMainFragment {
         View view = inflater.inflate(R.layout.fragment_main_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
         photoRecycle.setLayoutManager(new GridLayoutManager(getContext(),2));
-        initDownloader();
-        //getPhotoItems();
+       // initDownloader();
+        getPhotoItems();
         return view;
     }
 
@@ -76,6 +76,10 @@ public class MainFragment extends BaseMainFragment {
         if (isAdded()) {
             mAdapter = new PhotoAdapter(items,mCompositeDisposable);
             mAdapter.bindToRecyclerView(photoRecycle);
+            mAdapter.setItemLoadErrorCallback((item,position)-> {
+                items.remove(item);
+                mAdapter.notifyItemChanged(position);
+            });
         }
     }
 
@@ -90,6 +94,7 @@ public class MainFragment extends BaseMainFragment {
                 }
                 if (!returnResponse.error) {
                     items = returnResponse.results;
+                    MyLog.i(TAG, "items size: " + items.size());
                     bindAdapter();
                 }else
                     MyLog.i(TAG, "error: unknow");
